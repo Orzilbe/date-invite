@@ -394,7 +394,7 @@
   function goToPage3() {
     document.getElementById('page2').classList.remove('active');
     document.getElementById('page3').classList.add('active');
-    document.getElementById('dateInput').min = new Date().toISOString().split('T')[0];
+    const _today = new Date(); const _max = new Date(_today); _max.setDate(_today.getDate() + 14); document.getElementById('dateInput').min = _today.toISOString().split('T')[0]; document.getElementById('dateInput').max = _max.toISOString().split('T')[0];
     window.scrollTo(0, 0);
   }
 
