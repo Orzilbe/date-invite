@@ -33,11 +33,8 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .emoji-big { font-size: 4rem; margin-bottom: 1rem; display: block; }
     h1 { font-size: 1.6rem; font-weight: 600; color: #3C3489; margin-bottom: 0.5rem; line-height: 1.4; }
-    p { color: #5F5E5A; font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6; }
-    .section-label {
-      font-size: 0.85rem; font-weight: 600; color: #7F77DD;
-      letter-spacing: 0.05em; margin: 1.2rem 0 0.5rem; text-align: right;
-    }
+    p { color: #5F5E5A; font-size: 1rem; margin-bottom: 1rem; line-height: 1.6; }
+    .section-label { font-size: 0.85rem; font-weight: 600; color: #7F77DD; letter-spacing: 0.05em; margin: 1.2rem 0 0.5rem; text-align: right; }
     .btn-yes {
       background: linear-gradient(135deg, #D4537E, #7F77DD);
       color: white; border: none; padding: 14px 40px; border-radius: 50px;
@@ -50,43 +47,69 @@
       padding: 14px 40px; border-radius: 50px; font-size: 1rem; cursor: pointer;
       display: inline-block; margin: 0.5rem; user-select: none; -webkit-user-select: none;
     }
-    .buttons-row {
-      display: flex; justify-content: center; align-items: center;
-      gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;
-    }
-    .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 1rem 0; }
+    .buttons-row { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0.5rem 0; }
+    .options-grid.single-col { grid-template-columns: 1fr; }
     .option-btn {
       background: #fbeaf0; border: 2px solid #f4c0d1; color: #3C3489;
-      border-radius: 16px; padding: 14px 10px; font-size: 0.95rem; cursor: pointer;
+      border-radius: 16px; padding: 12px 10px; font-size: 0.9rem; cursor: pointer;
       transition: all 0.2s; display: flex; flex-direction: column;
-      align-items: center; gap: 6px; position: relative;
+      align-items: center; gap: 5px; position: relative; text-align: center;
     }
     .option-btn:hover { background: #f0d0dc; border-color: #D4537E; }
     .option-btn.selected {
       background: #D4537E; border-color: #D4537E; color: white;
-      transform: scale(1.04); box-shadow: 0 4px 14px rgba(212, 83, 126, 0.35);
+      transform: scale(1.03); box-shadow: 0 4px 14px rgba(212, 83, 126, 0.35);
     }
     .option-btn.selected::after {
-      content: '✓'; position: absolute; top: 6px; left: 8px;
+      content: '✓'; position: absolute; top: 5px; left: 7px;
+      font-size: 0.75rem; font-weight: 700; background: white; color: #D4537E;
+      width: 17px; height: 17px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; line-height: 17px;
+    }
+    .option-btn span.emoji { font-size: 1.4rem; }
+    /* Babysitter single-select style */
+    .baby-btn {
+      background: #fbeaf0; border: 2px solid #f4c0d1; color: #3C3489;
+      border-radius: 14px; padding: 13px 16px; font-size: 0.95rem; cursor: pointer;
+      transition: all 0.2s; text-align: right; width: 100%; position: relative;
+    }
+    .baby-btn:hover { background: #f0d0dc; border-color: #D4537E; }
+    .baby-btn.selected {
+      background: #D4537E; border-color: #D4537E; color: white;
+      box-shadow: 0 4px 14px rgba(212, 83, 126, 0.35);
+    }
+    .baby-btn.selected::after {
+      content: '✓'; position: absolute; top: 50%; left: 12px; transform: translateY(-50%);
       font-size: 0.8rem; font-weight: 700; background: white; color: #D4537E;
       width: 18px; height: 18px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center; line-height: 18px;
     }
-    .option-btn span.emoji { font-size: 1.5rem; }
+    .baby-grid { display: flex; flex-direction: column; gap: 8px; margin: 0.5rem 0; }
+    .free-text-input {
+      width: 100%; padding: 12px 16px; border: 1.5px solid #f4c0d1;
+      border-radius: 12px; font-size: 1rem; color: #3C3489;
+      background: #fbeaf0; outline: none; margin-top: 8px;
+      font-family: inherit; resize: none;
+      transition: border-color 0.2s;
+    }
+    .free-text-input:focus { border-color: #D4537E; background: white; }
     input[type="date"], input[type="time"] {
       width: 100%; padding: 12px 16px; border: 1.5px solid #f4c0d1;
       border-radius: 12px; font-size: 1rem; color: #3C3489;
       background: #fbeaf0; outline: none; cursor: pointer; margin-bottom: 10px;
     }
     input[type="date"]:focus, input[type="time"]:focus { border-color: #D4537E; background: white; }
-    .summary-item {
-      display: flex; align-items: center; gap: 12px; padding: 14px 16px;
-      background: #fbeaf0; border-radius: 14px; margin: 8px 0; text-align: right;
+    .sub-section {
+      background: #fdf0f4; border-radius: 16px; padding: 1rem;
+      margin-top: 0.8rem; border: 1.5px dashed #f4c0d1;
+      animation: fadeIn 0.3s ease;
     }
-    .summary-item .icon { font-size: 1.4rem; flex-shrink: 0; }
+    .summary-item { display: flex; align-items: center; gap: 12px; padding: 13px 16px; background: #fbeaf0; border-radius: 14px; margin: 7px 0; text-align: right; }
+    .summary-item .icon { font-size: 1.3rem; flex-shrink: 0; }
     .summary-item .text { flex: 1; }
     .summary-item .label { font-size: 0.8rem; color: #888; margin-bottom: 2px; }
-    .summary-item .value { font-size: 1rem; font-weight: 600; color: #3C3489; }
+    .summary-item .value { font-size: 0.95rem; font-weight: 600; color: #3C3489; line-height: 1.4; }
     .btn-next {
       background: linear-gradient(135deg, #D4537E, #7F77DD); color: white; border: none;
       padding: 14px 36px; border-radius: 50px; font-size: 1rem; font-weight: 600;
@@ -95,24 +118,18 @@
     .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
     .btn-next:not(:disabled):hover { opacity: 0.9; }
     .confetti { font-size: 1.8rem; letter-spacing: 4px; margin-bottom: 1rem; }
-    .hearts-float {
-      position: fixed; pointer-events: none; top: 0; left: 0;
-      width: 100%; height: 100%;  z-index: 999;
-    }
+    .hearts-float { position: fixed; pointer-events: none; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 999; }
     .heart { position: absolute; font-size: 1.2rem; animation: floatUp 3s ease-out forwards; opacity: 0; }
-    @keyframes floatUp {
-      0% { opacity: 1; transform: translateY(0) scale(1); }
-      100% { opacity: 0; transform: translateY(-200px) scale(0.5); }
-    }
+    @keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-200px) scale(0.5); } }
     .sending-status { font-size: 0.85rem; color: #888; margin-top: 0.5rem; }
     .sending-status.success { color: #0F6E56; font-weight: 500; }
     .sending-status.error { color: #A32D2D; }
     .note { font-size: 0.8rem; color: #aaa; margin-top: 0.5rem; }
     #noBtnFloat {
       position: fixed; background: transparent; color: #888; border: 1.5px solid #ddd;
-      padding: 14px 40px; border-radius: 50px; font-size: 1rem;
-      cursor: pointer; z-index: 9999; white-space: nowrap;
+      padding: 14px 40px; border-radius: 50px; font-size: 1rem; cursor: pointer; z-index: 9999; white-space: nowrap;
     }
+    .multi-hint { font-size: 0.78rem; color: #a88; margin-bottom: 0.3rem; text-align: right; }
   </style>
 </head>
 <body>
@@ -133,21 +150,45 @@
   </div>
 </div>
 
-<!-- Page 2: Food & Location -->
+<!-- Page 2: Activities -->
 <div class="page" id="page2">
   <div class="card">
     <span class="emoji-big">🎉</span>
     <h1>איזה כיף שהסכמת!</h1>
-    <p>עכשיו בוא נבנה את הדייט המושלם שלנו ✨</p>
-    <div class="section-label">🍽️ מה בא לך לאכול?</div>
-    <div class="options-grid" id="foodGrid">
-      <button class="option-btn" onclick="selectOption(this,'food','יפני 🍣','foodGrid')"><span class="emoji">🍣</span>יפני</button>
-      <button class="option-btn" onclick="selectOption(this,'food','איטלקי 🍕','foodGrid')"><span class="emoji">🍕</span>איטלקי</button>
-      <button class="option-btn" onclick="selectOption(this,'food','ים תיכוני 🥗','foodGrid')"><span class="emoji">🥗</span>ים תיכוני</button>
-      <button class="option-btn" onclick="selectOption(this,'food','מקסיקני 🌮','foodGrid')"><span class="emoji">🌮</span>מקסיקני</button>
-      <button class="option-btn" onclick="selectOption(this,'food','המבורגר 🍔','foodGrid')"><span class="emoji">🍔</span>המבורגר</button>
-      <button class="option-btn" onclick="selectOption(this,'food','יין / בירה 🍷','foodGrid')"><span class="emoji">🍷</span>יין / בירה</button>
+    <p>מה בא לך לעשות בדייט? (אפשר לבחור כמה)</p>
+    <div class="multi-hint">✨ ניתן לבחור יותר מאפשרות אחת</div>
+    <div class="options-grid" id="activityGrid">
+      <button class="option-btn" onclick="toggleActivity(this,'פיקניק 🧺')"><span class="emoji">🧺</span>פיקניק</button>
+      <button class="option-btn" onclick="toggleActivity(this,'טעימות יין וגבינות 🍷')"><span class="emoji">🍷</span>טעימות יין וגבינות</button>
+      <button class="option-btn" onclick="toggleActivity(this,'ספא 💆')"><span class="emoji">💆</span>ספא</button>
+      <button class="option-btn" onclick="toggleActivity(this,'שקיעה בנקודת תצפית 🌅')"><span class="emoji">🌅</span>שקיעה בנקודת תצפית</button>
+      <button class="option-btn" onclick="toggleActivity(this,'סדנת בישול 👨‍🍳')"><span class="emoji">👨‍🍳</span>סדנת בישול</button>
+      <button class="option-btn" onclick="toggleActivity(this,'סדנת נגרות 🪚')"><span class="emoji">🪚</span>סדנת נגרות</button>
+      <button class="option-btn" onclick="toggleActivity(this,'חדר בריחה 🔐')"><span class="emoji">🔐</span>חדר בריחה</button>
+      <button class="option-btn" onclick="toggleActivity(this,'טיול עירוני 🏙️')"><span class="emoji">🏙️</span>טיול עירוני</button>
+      <button class="option-btn" onclick="toggleActivity(this,'מוזיאון + קפה ☕')"><span class="emoji">☕</span>מוזיאון + קפה</button>
+      <button class="option-btn" onclick="toggleActivity(this,'שוק מחנה יהודה 🛒')"><span class="emoji">🛒</span>שוק מחנה יהודה</button>
+      <button class="option-btn" id="btnHikeFood" onclick="toggleActivityFood(this,'טיול רגלי + אוכל 🥾')"><span class="emoji">🥾</span>טיול רגלי + אוכל</button>
+      <button class="option-btn" id="btnRestaurant" onclick="toggleActivityFood(this,'מסעדה 🍽️')"><span class="emoji">🍽️</span>מסעדה</button>
     </div>
+
+    <!-- Food sub-section (shown when restaurant or hike+food selected) -->
+    <div class="sub-section" id="foodSection" style="display:none;">
+      <div class="section-label">🍽️ איזה סוג אוכל?</div>
+      <div class="options-grid" id="foodGrid">
+        <button class="option-btn" onclick="selectFood(this,'יפני 🍣')"><span class="emoji">🍣</span>יפני</button>
+        <button class="option-btn" onclick="selectFood(this,'איטלקי 🍕')"><span class="emoji">🍕</span>איטלקי</button>
+        <button class="option-btn" onclick="selectFood(this,'ים תיכוני 🥗')"><span class="emoji">🥗</span>ים תיכוני</button>
+        <button class="option-btn" onclick="selectFood(this,'מקסיקני 🌮')"><span class="emoji">🌮</span>מקסיקני</button>
+        <button class="option-btn" onclick="selectFood(this,'המבורגר 🍔')"><span class="emoji">🍔</span>המבורגר</button>
+        <button class="option-btn" onclick="selectFood(this,'יין / בירה 🍷')"><span class="emoji">🍷</span>יין / בירה</button>
+      </div>
+    </div>
+
+    <!-- Other activity free text -->
+    <div class="section-label">🙋 רעיון אחר?</div>
+    <input class="free-text-input" type="text" id="activityOther" placeholder="כתוב כאן..." oninput="checkPage2()">
+
     <div class="section-label">📍 איפה תרצה?</div>
     <div class="options-grid" id="locationGrid">
       <button class="option-btn" onclick="selectOption(this,'location','קניון מודיעין 🛍️','locationGrid')"><span class="emoji">🛍️</span>קניון מודיעין</button>
@@ -155,6 +196,7 @@
       <button class="option-btn" onclick="selectOption(this,'location','ישפרו סנטר 🏬','locationGrid')"><span class="emoji">🏬</span>ישפרו סנטר</button>
       <button class="option-btn" onclick="selectOption(this,'location','ליגד סנטר 🏙️','locationGrid')"><span class="emoji">🏙️</span>ליגד סנטר</button>
     </div>
+
     <button class="btn-next" id="nextBtn2" disabled onclick="goToPage3()">הבא → בחר תאריך ושעה</button>
   </div>
 </div>
@@ -169,12 +211,33 @@
     <input type="date" id="dateInput" onchange="checkPage3()">
     <div class="section-label">⏰ שעה</div>
     <input type="time" id="timeInput" onchange="checkPage3()">
-    <button class="btn-next" id="nextBtn3" disabled onclick="goToPage4()">הבא → לסיכום הדייט</button>
+    <button class="btn-next" id="nextBtn3" disabled onclick="goToPage4()">הבא → בייביסיטר לאודיה</button>
   </div>
 </div>
 
-<!-- Page 4: Summary -->
+<!-- Page 4: Babysitter -->
 <div class="page" id="page4">
+  <div class="card">
+    <span class="emoji-big">👶</span>
+    <h1>את מי להזמין לבייביסיטר?</h1>
+    <p>מי ישמור על אודיה? 🥰</p>
+    <div class="baby-grid">
+      <button class="baby-btn" onclick="selectBaby(this,'אושי ואבי 👨‍👩‍👧')">👨‍👩‍👧 אושי ואבי</button>
+      <button class="baby-btn" onclick="selectBaby(this,'אורית ואריה 👴👵')">👴👵 אורית ואריה</button>
+      <button class="baby-btn" onclick="selectBaby(this,'מוריה ואלאור 💑')">💑 מוריה ואלאור</button>
+      <button class="baby-btn" onclick="selectBaby(this,'שי וסרגיי 🧑‍🤝‍🧑')">🧑‍🤝‍🧑 שי וסרגיי</button>
+      <button class="baby-btn" onclick="selectBaby(this,'היא באה איתנו 🌟')">🌟 היא באה איתנו</button>
+      <button class="baby-btn" id="babyOtherBtn" onclick="selectBaby(this,'אחר')">✏️ אחר...</button>
+    </div>
+    <div id="babyOtherInput" style="display:none;">
+      <input class="free-text-input" type="text" id="babyOtherText" placeholder="מי ישמור על אודיה?" oninput="checkPage4()">
+    </div>
+    <button class="btn-next" id="nextBtn4" disabled onclick="goToPage5()">הבא → סיכום הדייט</button>
+  </div>
+</div>
+
+<!-- Page 5: Summary -->
+<div class="page" id="page5">
   <div class="card">
     <div class="confetti">🎊🌹💑🌹🎊</div>
     <h1>הדייט שלנו מוכן!</h1>
@@ -187,7 +250,13 @@
 </div>
 
 <script>
-  let selectedFood = '', selectedLocation = '';
+  let selectedActivities = [];
+  let needsFood = false;
+  let selectedFood = '';
+  let selectedLocation = '';
+  let selectedBaby = '';
+
+  // --- No button physics ---
   const noFloat = document.getElementById('noBtnFloat');
   const noAnchor = document.getElementById('noAnchor');
   let btnX = 0, btnY = 0, velX = 0, velY = 0;
@@ -239,12 +308,70 @@
   noAnchor.addEventListener('touchstart', (e) => { e.preventDefault(); if (!floating) initNoButton(); }, { passive: false });
   setTimeout(() => { if (!floating && document.getElementById('page1').classList.contains('active')) initNoButton(); }, 400);
 
+  // --- Activity selection (multi) ---
+  function toggleActivity(btn, value) {
+    const idx = selectedActivities.indexOf(value);
+    if (idx > -1) { selectedActivities.splice(idx, 1); btn.classList.remove('selected'); }
+    else { selectedActivities.push(value); btn.classList.add('selected'); }
+    checkPage2();
+  }
+
+  function toggleActivityFood(btn, value) {
+    const idx = selectedActivities.indexOf(value);
+    if (idx > -1) {
+      selectedActivities.splice(idx, 1);
+      btn.classList.remove('selected');
+    } else {
+      selectedActivities.push(value);
+      btn.classList.add('selected');
+    }
+    // Show food section if either food-related activity is selected
+    const showFood = selectedActivities.some(a => a.includes('מסעדה') || a.includes('טיול רגלי'));
+    document.getElementById('foodSection').style.display = showFood ? 'block' : 'none';
+    if (!showFood) {
+      selectedFood = '';
+      document.querySelectorAll('#foodGrid .option-btn').forEach(b => b.classList.remove('selected'));
+    }
+    checkPage2();
+  }
+
+  function selectFood(btn, food) {
+    document.querySelectorAll('#foodGrid .option-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedFood = food;
+    checkPage2();
+  }
+
   function selectOption(btn, type, value, gridId) {
     document.querySelectorAll('#' + gridId + ' .option-btn').forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
-    if (type === 'food') selectedFood = value;
-    else selectedLocation = value;
-    document.getElementById('nextBtn2').disabled = !(selectedFood && selectedLocation);
+    if (type === 'location') selectedLocation = value;
+    checkPage2();
+  }
+
+  function checkPage2() {
+    const hasActivity = selectedActivities.length > 0 || document.getElementById('activityOther').value.trim();
+    const foodRequired = selectedActivities.some(a => a.includes('מסעדה') || a.includes('טיול רגלי'));
+    const foodOk = !foodRequired || selectedFood;
+    document.getElementById('nextBtn2').disabled = !(hasActivity && foodOk && selectedLocation);
+  }
+
+  // --- Babysitter ---
+  function selectBaby(btn, value) {
+    document.querySelectorAll('.baby-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedBaby = value;
+    const isOther = value === 'אחר';
+    document.getElementById('babyOtherInput').style.display = isOther ? 'block' : 'none';
+    if (!isOther) checkPage4();
+    else { selectedBaby = ''; checkPage4(); }
+  }
+
+  function checkPage4() {
+    const otherText = document.getElementById('babyOtherText').value.trim();
+    const babyOtherSelected = document.getElementById('babyOtherBtn').classList.contains('selected');
+    if (babyOtherSelected) selectedBaby = otherText;
+    document.getElementById('nextBtn4').disabled = !selectedBaby;
   }
 
   function spawnHearts() {
@@ -269,16 +396,24 @@
     spawnHearts();
     document.getElementById('page1').classList.remove('active');
     document.getElementById('page2').classList.add('active');
+    window.scrollTo(0, 0);
   }
 
   function goToPage3() {
     document.getElementById('page2').classList.remove('active');
     document.getElementById('page3').classList.add('active');
     document.getElementById('dateInput').min = new Date().toISOString().split('T')[0];
+    window.scrollTo(0, 0);
   }
 
   function checkPage3() {
     document.getElementById('nextBtn3').disabled = !(document.getElementById('dateInput').value && document.getElementById('timeInput').value);
+  }
+
+  function goToPage4() {
+    document.getElementById('page3').classList.remove('active');
+    document.getElementById('page4').classList.add('active');
+    window.scrollTo(0, 0);
   }
 
   function formatDateHebrew(dateStr) {
@@ -290,31 +425,42 @@
     return `יום ${days[date.getDay()]}, ${parseInt(d)} ב${months[parseInt(m)-1]} ${y}`;
   }
 
-  function goToPage4() {
+  function goToPage5() {
     const date = document.getElementById('dateInput').value;
     const time = document.getElementById('timeInput').value;
+    const otherActivity = document.getElementById('activityOther').value.trim();
+    let activitiesDisplay = [...selectedActivities];
+    if (otherActivity) activitiesDisplay.push(otherActivity);
+    const activitiesStr = activitiesDisplay.join('، ') || '—';
+    const foodStr = selectedFood ? ` (${selectedFood})` : '';
+
     document.getElementById('summaryContent').innerHTML = `
-      <div class="summary-item"><span class="icon">🍽️</span><div class="text"><div class="label">אוכל</div><div class="value">${selectedFood}</div></div></div>
+      <div class="summary-item"><span class="icon">🎯</span><div class="text"><div class="label">פעילויות</div><div class="value">${activitiesStr}${foodStr}</div></div></div>
       <div class="summary-item"><span class="icon">📍</span><div class="text"><div class="label">מיקום</div><div class="value">${selectedLocation}</div></div></div>
       <div class="summary-item"><span class="icon">📅</span><div class="text"><div class="label">תאריך</div><div class="value">${formatDateHebrew(date)}</div></div></div>
-      <div class="summary-item"><span class="icon">⏰</span><div class="text"><div class="label">שעה</div><div class="value">${time}</div></div></div>`;
-    document.getElementById('page3').classList.remove('active');
-    document.getElementById('page4').classList.add('active');
+      <div class="summary-item"><span class="icon">⏰</span><div class="text"><div class="label">שעה</div><div class="value">${time}</div></div></div>
+      <div class="summary-item"><span class="icon">👶</span><div class="text"><div class="label">בייביסיטר לאודיה</div><div class="value">${selectedBaby}</div></div></div>`;
+
+    document.getElementById('page4').classList.remove('active');
+    document.getElementById('page5').classList.add('active');
     spawnHearts();
+    window.scrollTo(0, 0);
   }
 
   async function sendDetails() {
     const date = document.getElementById('dateInput').value;
     const time = document.getElementById('timeInput').value;
+    const otherActivity = document.getElementById('activityOther').value.trim();
+    let activitiesDisplay = [...selectedActivities];
+    if (otherActivity) activitiesDisplay.push(otherActivity);
+    const activitiesStr = activitiesDisplay.join(', ');
+    const foodStr = selectedFood ? ` (${selectedFood})` : '';
+
     const btn = document.getElementById('sendBtn');
     const status = document.getElementById('sendStatus');
+    btn.disabled = true; btn.textContent = '⏳ שולח...';
 
-    btn.disabled = true;
-    btn.textContent = '⏳ שולח...';
-    status.textContent = '';
-    status.className = 'sending-status';
-
-    const body = `אוריאל הסכים לדייט! 🎉\n\nפרטי הדייט:\n🍽️ אוכל: ${selectedFood}\n📍 מיקום: ${selectedLocation}\n📅 תאריך: ${formatDateHebrew(date)}\n⏰ שעה: ${time}`;
+    const body = `אוריאל הסכים לדייט! 🎉\n\nפרטי הדייט:\n🎯 פעילויות: ${activitiesStr}${foodStr}\n📍 מיקום: ${selectedLocation}\n📅 תאריך: ${formatDateHebrew(date)}\n⏰ שעה: ${time}\n👶 בייביסיטר לאודיה: ${selectedBaby}`;
 
     try {
       const res = await fetch('https://formspree.io/f/xaqzapva', {
@@ -323,23 +469,20 @@
         body: JSON.stringify({
           subject: '💗 אוריאל הסכים לדייט!',
           message: body,
-          אוכל: selectedFood,
+          פעילויות: activitiesStr + foodStr,
           מיקום: selectedLocation,
           תאריך: formatDateHebrew(date),
-          שעה: time
+          שעה: time,
+          בייביסיטר: selectedBaby
         })
       });
-
       if (res.ok) {
         btn.textContent = '✅ נשלח!';
         status.textContent = 'המייל נשלח בהצלחה ל־Orzilbe@gmail.com 🎊';
         status.className = 'sending-status success';
-      } else {
-        throw new Error('שגיאה');
-      }
-    } catch (e) {
-      btn.disabled = false;
-      btn.textContent = '📩 שלח שוב';
+      } else { throw new Error(); }
+    } catch {
+      btn.disabled = false; btn.textContent = '📩 שלח שוב';
       status.textContent = 'משהו השתבש, נסי שוב ❌';
       status.className = 'sending-status error';
     }
