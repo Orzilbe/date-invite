@@ -11,11 +11,14 @@
       background: linear-gradient(135deg, #fbeaf0 0%, #eeedfe 50%, #e1f5ee 100%);
       min-height: 100vh;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       padding: 20px;
+      padding-top: 40px;
       direction: rtl;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .page { display: none; width: 100%; max-width: 480px; }
     .page.active { display: block; }
@@ -94,7 +97,7 @@
     .confetti { font-size: 1.8rem; letter-spacing: 4px; margin-bottom: 1rem; }
     .hearts-float {
       position: fixed; pointer-events: none; top: 0; left: 0;
-      width: 100%; height: 100%; overflow: hidden; z-index: 999;
+      width: 100%; height: 100%;  z-index: 999;
     }
     .heart { position: absolute; font-size: 1.2rem; animation: floatUp 3s ease-out forwards; opacity: 0; }
     @keyframes floatUp {
