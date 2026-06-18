@@ -189,14 +189,6 @@
     <div class="section-label">🙋 רעיון אחר?</div>
     <input class="free-text-input" type="text" id="activityOther" placeholder="כתוב כאן..." oninput="checkPage2()">
 
-    <div class="section-label">📍 איפה תרצה?</div>
-    <div class="options-grid" id="locationGrid">
-      <button class="option-btn" onclick="selectOption(this,'location','קניון מודיעין 🛍️','locationGrid')"><span class="emoji">🛍️</span>קניון מודיעין</button>
-      <button class="option-btn" onclick="selectOption(this,'location','מער 🌿','locationGrid')"><span class="emoji">🌿</span>מער</button>
-      <button class="option-btn" onclick="selectOption(this,'location','ישפרו סנטר 🏬','locationGrid')"><span class="emoji">🏬</span>ישפרו סנטר</button>
-      <button class="option-btn" onclick="selectOption(this,'location','ליגד סנטר 🏙️','locationGrid')"><span class="emoji">🏙️</span>ליגד סנטר</button>
-    </div>
-
     <button class="btn-next" id="nextBtn2" disabled onclick="goToPage3()">הבא → בחר תאריך ושעה</button>
   </div>
 </div>
@@ -211,7 +203,7 @@
     <input type="date" id="dateInput" onchange="checkPage3()">
     <div class="section-label">⏰ שעה</div>
     <input type="time" id="timeInput" onchange="checkPage3()">
-    <button class="btn-next" id="nextBtn3" disabled onclick="goToPage4()">הבא → בייביסיטר לאודיה</button>
+    <button class="btn-next" id="nextBtn3" disabled onclick="goToPage4()">הבא ← בייביסיטר לאודיה</button>
   </div>
 </div>
 
@@ -222,17 +214,17 @@
     <h1>את מי להזמין לבייביסיטר?</h1>
     <p>מי ישמור על אודיה? 🥰</p>
     <div class="baby-grid">
-      <button class="baby-btn" onclick="selectBaby(this,'אושי ואבי 👨‍👩‍👧')">👨‍👩‍👧 אושי ואבי</button>
+      <button class="baby-btn" onclick="selectBaby(this,'אושי ואבי 👴👵')">👴👵 אושי ואבי</button>
       <button class="baby-btn" onclick="selectBaby(this,'אורית ואריה 👴👵')">👴👵 אורית ואריה</button>
-      <button class="baby-btn" onclick="selectBaby(this,'מוריה ואלאור 💑')">💑 מוריה ואלאור</button>
-      <button class="baby-btn" onclick="selectBaby(this,'שי וסרגיי 🧑‍🤝‍🧑')">🧑‍🤝‍🧑 שי וסרגיי</button>
+      <button class="baby-btn" onclick="selectBaby(this,'מוריה ואלאור 👨‍👩‍👧')">💑 מוריה ואלאור</button>
+      <button class="baby-btn" onclick="selectBaby(this,'שי וסרגיי 👨‍👩‍👧')">👨‍👩‍👧 שי וסרגיי</button>
       <button class="baby-btn" onclick="selectBaby(this,'היא באה איתנו 🌟')">🌟 היא באה איתנו</button>
       <button class="baby-btn" id="babyOtherBtn" onclick="selectBaby(this,'אחר')">✏️ אחר...</button>
     </div>
     <div id="babyOtherInput" style="display:none;">
       <input class="free-text-input" type="text" id="babyOtherText" placeholder="מי ישמור על אודיה?" oninput="checkPage4()">
     </div>
-    <button class="btn-next" id="nextBtn4" disabled onclick="goToPage5()">הבא → סיכום הדייט</button>
+    <button class="btn-next" id="nextBtn4" disabled onclick="goToPage5()">הבא ← סיכום הדייט</button>
   </div>
 </div>
 
@@ -353,7 +345,7 @@
     const hasActivity = selectedActivities.length > 0 || document.getElementById('activityOther').value.trim();
     const foodRequired = selectedActivities.some(a => a.includes('מסעדה') || a.includes('טיול רגלי'));
     const foodOk = !foodRequired || selectedFood;
-    document.getElementById('nextBtn2').disabled = !(hasActivity && foodOk && selectedLocation);
+    document.getElementById('nextBtn2').disabled = !(hasActivity && foodOk);
   }
 
   // --- Babysitter ---
@@ -436,7 +428,6 @@
 
     document.getElementById('summaryContent').innerHTML = `
       <div class="summary-item"><span class="icon">🎯</span><div class="text"><div class="label">פעילויות</div><div class="value">${activitiesStr}${foodStr}</div></div></div>
-      <div class="summary-item"><span class="icon">📍</span><div class="text"><div class="label">מיקום</div><div class="value">${selectedLocation}</div></div></div>
       <div class="summary-item"><span class="icon">📅</span><div class="text"><div class="label">תאריך</div><div class="value">${formatDateHebrew(date)}</div></div></div>
       <div class="summary-item"><span class="icon">⏰</span><div class="text"><div class="label">שעה</div><div class="value">${time}</div></div></div>
       <div class="summary-item"><span class="icon">👶</span><div class="text"><div class="label">בייביסיטר לאודיה</div><div class="value">${selectedBaby}</div></div></div>`;
@@ -460,7 +451,7 @@
     const status = document.getElementById('sendStatus');
     btn.disabled = true; btn.textContent = '⏳ שולח...';
 
-    const body = `אוריאל הסכים לדייט! 🎉\n\nפרטי הדייט:\n🎯 פעילויות: ${activitiesStr}${foodStr}\n📍 מיקום: ${selectedLocation}\n📅 תאריך: ${formatDateHebrew(date)}\n⏰ שעה: ${time}\n👶 בייביסיטר לאודיה: ${selectedBaby}`;
+    const body = `אוריאל הסכים לדייט! 🎉\n\nפרטי הדייט:\n🎯 פעילויות: ${activitiesStr}${foodStr}\n📅 תאריך: ${formatDateHebrew(date)}\n⏰ שעה: ${time}\n👶 בייביסיטר לאודיה: ${selectedBaby}`;
 
     try {
       const res = await fetch('https://formspree.io/f/xaqzapva', {
@@ -470,7 +461,6 @@
           subject: '💗 אוריאל הסכים לדייט!',
           message: body,
           פעילויות: activitiesStr + foodStr,
-          מיקום: selectedLocation,
           תאריך: formatDateHebrew(date),
           שעה: time,
           בייביסיטר: selectedBaby
